@@ -34,17 +34,17 @@ async def recive_file(update:Update, context:ContextTypes.DEFAULT_TYPE):
     
     
     file_name = f'{update.message.from_user.id}{update.message.id}'
-    file_path = f'\{update.message.from_user.id}'+f'\{file_name}.'+'{}'
-    credentials_path = "\credentials.json"
+    file_path = f'{update.message.from_user.id}'+f'\{file_name}.'+'{}'
+    credentials_path = "credentials.json"
     print(file_format)
 
         
     if file_format == 'pdf':
-        file_path_pdf = f'\{update.message.from_user.id}'+f'\{file_name}'+'{}.{}'
+        file_path_pdf = f'{update.message.from_user.id}'+f'\{file_name}'+'{}.{}'
         print('ok')
         with open(file_path.format('pdf'),'wb') as f:
             f.write(file)
-        count = extract_png(file_path.format('pdf'), f'\{update.message.from_user.id}'+f'\{file_name}')
+        count = extract_png(file_path.format('pdf'), f'{update.message.from_user.id}'+f'\{file_name}')
         for i in range(count):
             await async_orc(file_path_pdf.format(i,'png'), credentials_path, file_path_pdf.format(i, 'txt'))
         
